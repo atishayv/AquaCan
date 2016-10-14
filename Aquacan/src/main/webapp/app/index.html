@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>AquaCan</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+
+    <link href="../lib/ionic/css/ionic.css" rel="stylesheet">
+    <script src="../lib/ionic/js/ionic.bundle.js"></script>
+    
+    
+    
+	<link href="../lib/css/bootstrap.min.css" rel="stylesheet" type="text/css"></link>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="../lib/css/font-awesome-animation.min.css">
+ 	<!-- <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>   -->
+ 	
+ 	<link href="../lib/css/ion-place-autocomplete.css" rel="stylesheet" type="text/css"></link>
+ 	<script src="../lib/js/ion-place-autocomplete.js"></script> 
+    
+    
+    
+    <script>
+      /*  window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '1018422334868810',
+          xfbml      : true,
+          version    : 'v2.4'
+        });
+      };
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));  */
+    </script>
+
+
+    
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?libraries=places&language=en"></script> -->
+    
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAl9Jqc6jC_VM0nNrklpkBPLSwqoNh-_KU&v=3.exp&libraries=places"></script> -->
+    
+   <!--  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAl9Jqc6jC_VM0nNrklpkBPLSwqoNh-_KU&libraries=places&callback=initMap"></script> -->
+   
+   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgTjI62UPeO-xt3Dwkm5HhdF_Gnhv4roI&libraries=places,geometry&sensor=false"></script>
+    <script src="js/app.js"></script>
+    
+    
+    
+    <!-- custom application js and css that needs to be added -->
+    
+    <script src="js/home_controller.js"></script>
+    <link href="css/home_page.css" rel="stylesheet">
+    
+    <script src="../login_app/js/login_controller.js"></script>
+    <link href="../login_app/css/login_page.css" rel="stylesheet">
+    
+    <script src="../order_app/js/order_controller.js"></script>
+    <link href="../order_app/css/order_page.css" rel="stylesheet">
+    
+    <script src="../payment_app/js/payment_controller.js"></script>
+    <link href="../payment_app/css/payment_page.css" rel="stylesheet">
+    
+    <!-- custom application js and css that needs to be added -->
+    
+    <script type="text/javascript">
+    	var deployment_location = 'http://localhost:8080';
+    	localStorage.clear();
+    	
+    	
+    	function initMap(){
+    		alert('map initialized');
+    	}
+    </script>
+
+    <!-- Needed for Cordova/PhoneGap (will be a 404 during development) -->
+    <!-- <script src="cordova.js"></script> -->
+  </head>
+  <body ui-view ng-app="aqua">
+  	
+  </body>
+</html>

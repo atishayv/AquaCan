@@ -1,0 +1,47 @@
+<ion-content class="loginViewCls">
+
+	<div class="loginToolbarCls">
+		<div class="loginToolbarTextCls">
+			<span class="spanTitle">AquaCan         </span>
+			<span class="spanDesc">Your water ordering app</span>
+		</div>
+	</div>
+	
+	
+	<div class="loginContentCls">
+	
+		<div class="loginPanelCls">
+			<div class="loginInputCls">
+				<input ng-change="update_first_name(first_name)" ng-model="first_name" ng-if="currentView=='Register'" type="text" placeholder="First Name" class="loginPanelTextFieldCls"/>
+				<input ng-change="update_last_name(last_name)" ng-model="last_name" ng-if="currentView=='Register'" type="text" placeholder="Last Name" class="loginPanelTextFieldCls"/>
+				<input ng-change="update_email_id(email_id)" ng-model="email_id" type="text" placeholder="Email Address" class="loginPanelTextFieldCls"/>
+				<input ng-change="update_password(password)" ng-model="password" type="password" placeholder="Password" class="loginPanelTextFieldCls"/>
+			</div>
+			
+			<button ng-click="create_account()" class="loginBtnCls" ng-if="currentView=='Register'">Create Account</button>
+			<button class="loginBtnCls" ng-if="currentView=='Login'" ng-click="sign_in()">Sign In</button>
+			<button class="facebookBtnCls" ng-if="currentView=='Login'" ng-click="do_FB_login()">Connect with Facebook</button>
+			
+			<div class="registerComponentCls" ng-if="currentView=='Login'">
+				<p class="register-account"> 
+					<a ng-click="goto_register_page()" class="register-link">Need an account? <strong>Register here </strong><i class="fa fa-arrow-right"></i>
+					</a><br>
+					<a class="password-link"><small>Forgot your password?</small>
+					</a> <br>
+					<a class="skip-login-link" ng-click="goto_home_page()">Skip Login
+					</a>
+				</p>
+			</div>
+			
+			<div class="registerComponentCls" ng-if="currentView=='Register'">
+				<p class="register-account">
+					<i class="fa fa-arrow-left"></i>
+					<a ng-click="goto_login_page()" class="register-link">Back to <strong>Login </strong>
+					</a>
+				</p>
+			</div>
+		</div>
+	
+	</div>
+
+</ion-content>
