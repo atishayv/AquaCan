@@ -4,7 +4,7 @@ aqua_app.config(function($stateProvider, $urlRouterProvider) {
 	  $stateProvider
 	  .state('login', {
 	      url: "/login",
-          templateUrl: "../login_app/templates/login.html",
+          templateUrl: "../app/login_app/templates/login.html",
           controller: "login_controller"
 	    })
 });

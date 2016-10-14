@@ -7,7 +7,7 @@ aqua_app.config(function($stateProvider, $urlRouterProvider) {
 	      params: {bottle_detail : null, total_price : null},
 	      views: {
 	    	  'app_content' : {
-	    		  templateUrl: "../payment_app/templates/payment.html",
+	    		  templateUrl: "../app/payment_app/templates/payment.html",
 	              controller: "payment_controller"
 	    	  }
 	      }
