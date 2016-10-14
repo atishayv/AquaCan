@@ -58,5 +58,5 @@
  
   <gap:plugin name="org.apache.cordova.console" />
   <gap:plugin name="org.apache.cordova.network-information" />
-  <gap:plugin name="cordova-plugin-geolocation" spec="~2.4.0" />
+  <gap:plugin name="cordova-plugin-geolocation" />
 </widget>
