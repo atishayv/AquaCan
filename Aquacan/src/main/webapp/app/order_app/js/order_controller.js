@@ -6,7 +6,7 @@ aqua_app.config(function($stateProvider, $urlRouterProvider) {
 	      url: "/order",
 	      views: {
 	    	  'app_content' : {
-	    		  templateUrl: "../app/order_app/templates/order.html",
+	    		  templateUrl: "order_app/templates/order.html",
 	              controller: "order_controller"
 	    	  }
 	      }
@@ -63,7 +63,7 @@ angular.module('aqua.order_app', ['ionic','ion-place-tools'])
 			var req = {
 	  				 method: 'POST',
 	  				 //url: deployment_location + '/Aquacan/order_app/data/dealerData.txt',
-	  				 url : '../app/order_app/data/dealerData.txt',
+	  				 url : 'order_app/data/dealerData.txt',
 	  				 data: { 
 	  					 	action : 'get_dealer_data',
 	  					 	latitude : $scope.location_coords.latitude,
