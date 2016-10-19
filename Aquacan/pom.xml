@@ -17,5 +17,15 @@
   </dependencies>
   <build>
     <finalName>Aquacan</finalName>
+      <plugins>
+    	<plugin>
+		  <groupId>com.heroku.sdk</groupId>
+		  <artifactId>heroku-maven-plugin</artifactId>
+		  <version>0.5.1</version>
+		  <configuration>
+		    <appName>heroku-postgres-d1f14729</appName>
+		  </configuration>
+		</plugin>
+	  </plugins>
   </build>
 </project>
