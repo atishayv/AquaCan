@@ -2,8 +2,15 @@
 
 		<div class="mainViewToolbarCls">
 			<div class="mainViewToolbarTextCls">
-				<span class="spanTitle">AquaCan         </span>
-				<span class="spanDesc">Your water ordering app</span>
+				<div class="spanTitle">AquaCan         </div>
+				<div class="spanDesc">Your water ordering app</div>
+				<div class="loginDetailContainerCls"> 
+					<div ng-if='isLoggedIn==true'>
+						Hi {{user_data_obj.user_name}} !  <img ng-if="user_data_obj.profile_pic!=null" ng-src="{{user_data_obj.profile_pic}}" alt=""/>
+					</div>
+					<button class="loginButtonCls" ng-if='isLoggedIn==false'>Login/Register</button>
+				</div>
+				
 			</div>
 		</div>
 		
