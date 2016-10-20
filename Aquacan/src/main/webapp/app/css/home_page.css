@@ -17,7 +17,7 @@
 .mainViewCls .mainViewToolbarCls .mainViewToolbarTextCls .spanTitle{
     vertical-align: middle;
     display: table-cell;
-    width: 26%;
+    width: 25%;
     text-align: center;
     font-size: 27px;
     font-weight: bold;
@@ -27,6 +27,18 @@
 	vertical-align: middle;
     display: table-cell;
     font-size: 18px;
+    width: 50%;
+}
+.mainViewCls .mainViewToolbarCls .mainViewToolbarTextCls .loginDetailContainerCls{
+	vertical-align: middle;
+    display: table-cell;
+    font-size: 18px;
+    width: 25%;
+}
+.mainViewCls .mainViewToolbarCls .mainViewToolbarTextCls .loginDetailContainerCls .loginButtonCls{
+    height: 70%;
+    width: 35%;	
+    background: transparent;
 }
 
 @media only screen and (min-width: 320px) and (max-width: 768px) and (orientation: portrait){
@@ -46,10 +58,9 @@
 
 
 .mainViewCls .detailPanelCls{
-	height: 100%;
+	height: 90%;
     width: 100%;
     float: left;
-    padding: 4%;
     font-size: 15px;
     transition: all 200ms ease-in-out;
     display: inline;
