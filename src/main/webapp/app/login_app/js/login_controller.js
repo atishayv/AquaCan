@@ -179,7 +179,7 @@ angular.module('aqua.login_app', [])
   		  if (response.status === 'connected') {
   		    console.log('Logged in.');
   		    FB.api(
-  		    	    "/me?fields=id,name,picture,about,bio,birthday,education,email,gender,first_name,last_name,relationship_status,work",
+  		    	    "/me?fields=id,name,picture,about,birthday,education,email,gender,first_name,last_name,relationship_status,work",
   		    	    function (response) {
   		    	      if (response && !response.error) {
   		    	    	  console.log(response);
@@ -210,7 +210,7 @@ angular.module('aqua.login_app', [])
   		    	   // handle the response
   		    	console.log(response);
   		    	FB.api(
-	    		    	    "/me?fields=id,name,about,bio,birthday,education,email,gender,picture,first_name,last_name,relationship_status,work",
+	    		    	    "/me?fields=id,name,about,birthday,education,email,gender,picture,first_name,last_name,relationship_status,work",
 	    		    	    function (response) {
 	    		    	      if (response && !response.error) {
 	    		    	    	  console.log(response);
