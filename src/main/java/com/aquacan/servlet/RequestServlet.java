@@ -28,7 +28,7 @@ public class RequestServlet extends HttpServlet{
 	// JDBC driver name and database URL
     static final String JDBC_DRIVER = "org.postgresql.Driver";  
     //static final String DB_URL = "jdbc:postgresql://localhost:5432/aquacan";
-    static final String DB_URL = "jdbc:postgresql://ec2-54-235-125-135.compute-1.amazonaws.com:5432/d66ft4j2561eov";
+    static final String DB_URL = "jdbc:postgresql://ec2-54-235-125-135.compute-1.amazonaws.com:5432/d66ft4j2561eov?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory";
     
     //  Database credentials
 //    static final String USER = "postgres";
