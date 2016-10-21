@@ -15,7 +15,7 @@ angular.module('aqua.app_services', [])
 			
 			var req = {
 	  				 method: 'POST',
-	  				 url: deployment_location + '/Aquacan/requestServlet',
+	  				 url: deployment_location + 'requestServlet',
 	  				 data: { 
 	  					 	action : 'get_user_info',
 	  					 	user_id : localStorage.getItem('user_id'),

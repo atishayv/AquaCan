@@ -72,7 +72,7 @@ angular.module('aqua.login_app', [])
     	}else{
     		var req = {
     				 method: 'POST',
-    				 url: deployment_location + '/Aquacan/requestServlet',
+    				 url: deployment_location + 'requestServlet',
     				 data: { 
     					 	action : 'new_user_register',
     					 	first_name: $scope.first_name,
@@ -136,7 +136,7 @@ angular.module('aqua.login_app', [])
     	}else{
     		var req = {
    				 method: 'POST',
-   				 url: deployment_location + '/Aquacan/requestServlet',
+   				 url: deployment_location + 'requestServlet',
    				 data: { 
    					 	action : 'login',
    					 	password : $scope.password,
@@ -186,7 +186,7 @@ angular.module('aqua.login_app', [])
   		    	    	  //newUserRegister will either insert new user into DB if not exist or it will return User already exist
   		    	    	  var req = {
   		     				 method: 'POST',
-  		     				 url: deployment_location + '/Aquacan/requestServlet',
+  		     				 url: deployment_location + 'requestServlet',
   		     				 data: { 
   		     					 	action : 'new_user_register',
   		     					 	first_name: response.first_name,
@@ -217,7 +217,7 @@ angular.module('aqua.login_app', [])
 	    		    	    	  //newUserRegister will either insert new user into DB if not exist or it will return User already exist
 	      		    	    	  var req = {
 	      	  		     				 method: 'POST',
-	      	  		     				 url: deployment_location + '/Aquacan/requestServlet',
+	      	  		     				 url: deployment_location + 'requestServlet',
 	      	  		     				 data: { 
 	      	  		     					 	action : 'new_user_register',
 	      	  		     					 	first_name: response.first_name,
@@ -255,7 +255,7 @@ angular.module('aqua.login_app', [])
 		//first update the user information coming from facebook to DB and then select all data from User_profile table and add it store
 		var req = {
 				 method: 'POST',
-				 url: deployment_location + '/Aquacan/requestServlet',
+				 url: deployment_location + 'requestServlet',
 				 data: { 
 					 	action : 'update_user_data',
 					 	data: json
