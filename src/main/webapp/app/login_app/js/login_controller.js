@@ -159,7 +159,7 @@ angular.module('aqua.login_app', [])
     				
     				localStorage.setItem('user_id',response.user_id);
     				
-    				$state.go('home.order');
+    				$state.go('home', {}, {reload: true});
     			}
     		}, function(result){
     			console.log(result);
@@ -249,7 +249,7 @@ angular.module('aqua.login_app', [])
 				first_name : response.first_name ? response.first_name : '',
 				last_name : response.last_name ? response.last_name : '',
 				name : response.name ? response.name : '',
-				profile_pic : response.id ? 'http://graph.facebook.com/'+response.id+'/picture?type=large' : ''
+				profile_pic : response.picture.data.url
 			}
 		
 		//first update the user information coming from facebook to DB and then select all data from User_profile table and add it store
@@ -270,7 +270,7 @@ angular.module('aqua.login_app', [])
 			
 			localStorage.setItem('user_id',response.user_id);
 			
-			$state.go('home.order');
+			$state.go('home', {}, {reload: true});
 			
 		}, function(result){
 			console.log(result);

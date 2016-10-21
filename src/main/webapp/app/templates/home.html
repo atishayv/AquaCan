@@ -6,7 +6,7 @@
 				<div class="spanDesc">Your water ordering app</div>
 				<div class="loginDetailContainerCls"> 
 					<div ng-if='isLoggedIn==true'>
-						Hi {{user_data_obj.user_name}} !  <img ng-if="user_data_obj.profile_pic!=null" ng-src="{{user_data_obj.profile_pic}}" alt=""/>
+						Hi {{user_data_obj.first_name}} !  <img style="border-radius: 50%;" ng-if="user_data_obj.profile_pic!=null" ng-src="{{user_data_obj.profile_pic}}" alt=""/>
 					</div>
 					<button class="loginButtonCls" ng-if='isLoggedIn==false'>Login/Register</button>
 				</div>

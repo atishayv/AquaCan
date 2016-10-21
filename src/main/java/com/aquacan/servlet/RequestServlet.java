@@ -27,7 +27,7 @@ public class RequestServlet extends HttpServlet{
 	
 	// JDBC driver name and database URL
     static final String JDBC_DRIVER = "org.postgresql.Driver";  
-    //static final String DB_URL = "jdbc:postgresql://localhost:5432/aquacan";
+//    static final String DB_URL = "jdbc:postgresql://localhost:5432/aquacan";
     static final String DB_URL = "jdbc:postgresql://ec2-54-235-125-135.compute-1.amazonaws.com:5432/d66ft4j2561eov?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory";
     
     //  Database credentials
@@ -139,6 +139,27 @@ public class RequestServlet extends HttpServlet{
 					sendResponse(resp,responseArr.toString().getBytes("UTF-8"));
 			    	
 			    }
+			}else if(requestObject.getString("action").equalsIgnoreCase("get_user_info")){
+				System.out.println("inside get_user_info");
+				
+				String user_id = requestObject.getString("user_id");
+				
+				
+			    String sql;
+			    sql = "SELECT * FROM aquacandb.USER_DATA WHERE user_id='"+user_id+"'";
+			    stmt = connection.prepareStatement(sql);
+			    rs = stmt.executeQuery();
+			    if (!rs.isBeforeFirst() ) {
+			    	String responseStr = "Inavlid User Id";
+		    		resp.setHeader("Cache-Control", "no-cache");
+					sendResponse(resp,responseStr.getBytes("UTF-8")); 
+			    }else{
+			    	JSONArray responseArr = convertToArray(rs);
+			    	System.out.println(responseArr);
+			    	resp.setHeader("Cache-Control", "no-cache");
+					sendResponse(resp,responseArr.toString().getBytes("UTF-8"));
+			    	
+			    }
 			}else if(requestObject.getString("action").equalsIgnoreCase("update_user_data")){
 				JSONObject data = new JSONObject(requestObject.getString("data"));
 				String updateString = "";
@@ -178,7 +199,7 @@ public class RequestServlet extends HttpServlet{
 				if(updateString!=""){
 					updateString = updateString.substring(0, updateString.length()-1);
 					
-					String sql = "UPDATE USER_DATA SET "
+					String sql = "UPDATE aquacandb.USER_DATA SET "
 					 		+ updateString
 					 		+" WHERE mail_id='"+data.getString("mail_id")+"'";
 					System.out.println(sql);
