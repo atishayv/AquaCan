@@ -1,0 +1,31 @@
+.paymentViewCls .message_cls{
+    width: 90%;
+    margin-left: 5%;
+    text-align: center;
+    margin-top: 10%;	
+}
+
+.paymentViewCls .nav_button_cls{
+    position: absolute;
+    height: 45px;
+    width: 100%;
+    bottom: 10.9%;
+}
+.paymentViewCls .nav_button_cls .nav_back_button_cls{
+    width: 50%;
+    height: 45px;
+    float: left;
+    text-align: center;
+    border: 1px solid black;
+    border-right: 0px;
+    line-height: 45px;
+}
+.paymentViewCls .nav_button_cls .nav_continue_button_cls{
+    width: 50%;
+    background: #3abbd0;
+    height: 45px;
+    float: right;
+    text-align: center;
+    border: 1px solid black;
+    line-height: 45px;
+}
