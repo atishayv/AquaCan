@@ -1,5 +1,8 @@
 CREATE SCHEMA aquacandb;
 
+CREATE EXTENSION "cube";
+CREATE EXTENSION "earthdistance";
+
 CREATE TABLE aquacandb.USER_DATA
 (
 user_id SERIAL PRIMARY KEY NOT NULL,
@@ -15,3 +18,25 @@ latitude varchar(255),
 longitude varchar(255),
 contact_number varchar(14)
 );
+
+CREATE TABLE aquacandb.DEALER_DATA
+(
+dealer_id SERIAL PRIMARY KEY NOT NULL,
+name varchar(255),
+address varchar(255),
+rating int,
+contact_number varchar(14),
+point point,
+latitude varchar(255),
+longitude varchar(255)
+);
+
+CREATE TABLE aquacandb.CAN_DATA
+(
+can_id SERIAL PRIMARY KEY NOT NULL,
+name varchar(255),
+price int,
+dealer_id int references aquacandb.DEALER_DATA(dealer_id)
+);
+
+INSERT INTO aquacandb.DEALER_DATA (name,address,rating,contact_number,latitude,longitude) VALUES ('Cool Blues Pvt Ltd','B-40, Sector 10, Noida - 201301',4,'98647481234',point(77.5975258,12.9182785),'12.9182785','77.5975258');
