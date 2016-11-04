@@ -1,14 +1,26 @@
 <ion-content class="mainViewCls" scroll="false" id="main_view_id">
 
-		<div class="mainViewToolbarCls">
+		<div class="mainViewToolbarCls" id="main_view_header_id">
 			<div class="mainViewToolbarTextCls">
 				<div class="spanTitle">AquaCan         </div>
 				<div class="spanDesc">Your water ordering app</div>
 				<div class="loginDetailContainerCls"> 
 					<div ng-if='isLoggedIn==true'>
-						Hi {{user_data_obj.first_name}} !  <img style="border-radius: 50%;" ng-if="user_data_obj.profile_pic!=null" ng-src="{{user_data_obj.profile_pic}}" alt=""/>
+						Hi {{user_data_obj.first_name}} ! 
+						<span ng-click="toggle_show_login_option_menu()">
+							<img style="border-radius: 50%;" ng-if="user_data_obj.profile_pic!=null" ng-src="{{user_data_obj.profile_pic}}" alt=""/>
+							<div ng-class="show_login_option_menu ? 'dropdown-menu clearfix login_option_menu open' : 'dropdown-menu clearfix login_option_menu'">
+				                <ul class="" role="menu">
+				                   <li data-ng-repeat="item in user_options" class="ng-scope"><a href="" class="ng-binding" ng-click="login_option_menu_click_handler(item)">{{item}}</a></li>
+				                </ul>
+				            </div>
+						</span>
+						
+						
+						
+						
 					</div>
-					<button class="loginButtonCls" ng-if='isLoggedIn==false'>Login/Register</button>
+					<button ng-click="show_login_page()" class="loginButtonCls" ng-if="(isLoggedIn==false && isLoginView==false)">Login/Register</button>
 				</div>
 				
 			</div>
