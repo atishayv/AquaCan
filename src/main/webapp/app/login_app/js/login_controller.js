@@ -15,10 +15,12 @@ aqua_app.config(function($stateProvider, $urlRouterProvider) {
 
 
 angular.module('aqua.login_app', [])
-.controller('login_controller', ['$scope','$state','$ionicPopup','$http',function($scope,
+.controller('login_controller', ['$scope','$state','$ionicPopup','$http','user_data_service','cfpLoadingBar',function($scope,
 		$state,
 		$ionicPopup,
-		$http
+		$http,
+		user_data_service,
+		cfpLoadingBar
 	){
 	
 	
@@ -43,8 +45,8 @@ angular.module('aqua.login_app', [])
 	};
 	
 	$scope.goto_home_page = function(){
-		localStorage.setItem('user_id','skip');
-		$state.go('home.order');
+		//localStorage.setItem('user_id','');
+		$state.go('home', {}, {reload: true});
 	};
 	
 	$scope.goto_register_page = function(){
@@ -70,6 +72,7 @@ angular.module('aqua.login_app', [])
                 template: "Please enter a valid email-id"
 	        });
     	}else{
+    		cfpLoadingBar.start();
     		var req = {
     				 method: 'POST',
     				 url: deployment_location + 'requestServlet',
@@ -83,6 +86,7 @@ angular.module('aqua.login_app', [])
     				};
     		
     		$http(req).then(function(result){
+    			cfpLoadingBar.complete();
     			if(result.data == "User already exist"){
     				$ionicPopup.alert({
     	                title:"<b>Error</b>",
@@ -107,6 +111,7 @@ angular.module('aqua.login_app', [])
     		
     		}, function(result){
     			console.log(result);
+    			cfpLoadingBar.complete();
     			$ionicPopup.alert({
 	                title:"<b>Error</b>",
 	                template: "Something went wrong. Please try again."
@@ -134,6 +139,7 @@ angular.module('aqua.login_app', [])
                 template: "Please enter a valid email-id"
 	        });
     	}else{
+    		cfpLoadingBar.start();
     		var req = {
    				 method: 'POST',
    				 url: deployment_location + 'requestServlet',
@@ -146,6 +152,7 @@ angular.module('aqua.login_app', [])
     		
     		
     		$http(req).then(function(result){
+    			cfpLoadingBar.complete();
     			if(result.data=="User does not exist"){
     				$ionicPopup.alert({
     	                title:"<b>Error</b>",
@@ -162,6 +169,7 @@ angular.module('aqua.login_app', [])
     				$state.go('home', {}, {reload: true});
     			}
     		}, function(result){
+    			cfpLoadingBar.complete();
     			console.log(result);
     			$ionicPopup.alert({
 	                title:"<b>Error</b>",
@@ -175,6 +183,7 @@ angular.module('aqua.login_app', [])
 	
 	$scope.do_FB_login = function(){
 		
+		cfpLoadingBar.start();
 		FB.getLoginStatus(function(response) {
   		  if (response.status === 'connected') {
   		    console.log('Logged in.');
@@ -199,6 +208,7 @@ angular.module('aqua.login_app', [])
 	  		     			$scope.on_FB_login_success(response); 	////response is USer data coming from facebook
 	  		     		}, function(result){
 	  		     			console.log(result);
+	  		     			cfpLoadingBar.complete();
 	  		     		});
   		     		
   		    	      }
@@ -230,6 +240,7 @@ angular.module('aqua.login_app', [])
 	      		  		     			$scope.on_FB_login_success(response); 	////response is USer data coming from facebook
 	      		  		     		}, function(result){
 	      		  		     			console.log(result);
+	      		  		     			cfpLoadingBar.complete();
 	      		  		     		});
 	    		    	      }
 	    		    	    }
@@ -264,15 +275,17 @@ angular.module('aqua.login_app', [])
 		
 		
 		$http(req).then(function(result){
+			cfpLoadingBar.complete();
 			var response  = result.data[0];
 			
-			//user_data_service.set_user_data_obj(response);
+			user_data_service.set_user_data_obj(response);
 			
 			localStorage.setItem('user_id',response.user_id);
 			
 			$state.go('home', {}, {reload: true});
 			
 		}, function(result){
+			cfpLoadingBar.complete();
 			console.log(result);
 			$ionicPopup.alert({
                title:"<b>Error</b>",

@@ -7,12 +7,13 @@
 			<!-- <input id="loc_input_id" ng-change="update_location(location)" ng-model="location" type="text" placeholder="Enter location for water delivery services" class="locationInputCls"/> -->
 		</div>
 		
-		<ion-list class="dealer_list_cls" >
+		<!-- <div ng-if="dealer_data.length>0"></div> -->
+		<ion-list class="dealer_list_cls" ng-if="dealer_data.length>0">
             <ion-item class="dealer_list_item_cls" ng-repeat="item in dealer_data" ng-click="select_bottle(item)">
                 <div style="font-weight:bold;">{{item.name}}</div>
                 <div>{{item.address}}</div>
                 <div>
-                	<span style="float:left">{{item.contactNum}}</span>
+                	<span style="float:left">{{item.contact_number}}</span>
                 	<span style="float:right">Rating :: {{item.rating}}</span>
                 </div>
             </ion-item>
