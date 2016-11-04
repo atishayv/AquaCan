@@ -215,6 +215,46 @@ public class RequestServlet extends HttpServlet{
 				
 	    		resp.setHeader("Cache-Control", "no-cache");
 				sendResponse(resp,responseArr.toString().getBytes("UTF-8"));
+			}else if(requestObject.getString("action").equalsIgnoreCase("get_dealer_data")){
+				System.out.println("inside get_dealer_data");
+				
+				String latitude = requestObject.getString("latitude");
+				String longitude = requestObject.getString("longitude");
+				
+				
+				String sql = "select *,(select ( (select point from aquacandb.DEALER_DATA) <@> point("+longitude+","+latitude+") )) as distance_miles from aquacandb.DEALER_DATA WHERE (select ( (select point from aquacandb.DEALER_DATA) <@> point("+longitude+","+latitude+") ) as distance_miles)<=7";
+				stmt = connection.prepareStatement(sql);
+			    rs = stmt.executeQuery();
+			    if (!rs.isBeforeFirst() ) {
+			    	String responseStr = "Didn't found any water services nerabry..";
+		    		resp.setHeader("Cache-Control", "no-cache");
+					sendResponse(resp,responseStr.getBytes("UTF-8")); 
+			    }else{
+			    	JSONArray responseArr = convertToArray(rs);
+			    	System.out.println(responseArr);
+			    	resp.setHeader("Cache-Control", "no-cache");
+					sendResponse(resp,responseArr.toString().getBytes("UTF-8"));
+			    	
+			    }
+			}else if(requestObject.getString("action").equalsIgnoreCase("get_bottle_details")){
+				System.out.println("inside get_bottle_details");
+				
+				String dealer_id = requestObject.getString("dealer_id");
+				
+				String sql = "select * from aquacandb.CAN_DATA where dealer_id="+dealer_id ;
+				stmt = connection.prepareStatement(sql);
+			    rs = stmt.executeQuery();
+			    if (!rs.isBeforeFirst() ) {
+			    	String responseStr = "No can details for the dealer";
+		    		resp.setHeader("Cache-Control", "no-cache");
+					sendResponse(resp,responseStr.getBytes("UTF-8")); 
+			    }else{
+			    	JSONArray responseArr = convertToArray(rs);
+			    	System.out.println(responseArr);
+			    	resp.setHeader("Cache-Control", "no-cache");
+					sendResponse(resp,responseArr.toString().getBytes("UTF-8"));
+			    	
+			    }
 			}
 	    	
 	    }
@@ -236,6 +276,7 @@ public class RequestServlet extends HttpServlet{
 	        try {connection.close();} catch (SQLException e) {}
 	    }
 	}
+	
 	
 	
 	public static JSONArray convertToArray( ResultSet rs )
